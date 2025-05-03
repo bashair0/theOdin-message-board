@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/header.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="messages content">
+      <h2>All Messages</h2>
+      <ul class="messages-list">
+        <% if (messages.length === 0) { %>
+        <li>No messages yet!</li>
+        <% } %> <% messages.forEach((message) => { %>
+        <a href="">
+          <li class="fs-med flex">
+            <div>
+              <strong><%= message.user %></strong>: <%= message.text %> <% const
+              date = message.added.toString().split('G')[0] %>
+              <p class="added-time"><%= date %></p>
+            </div>
+            <div>
+              <button
+                type="button"
+                class="delete"
+                data-doc="<%= message._id %>">
+                ×
+              </button>
+            </div>
+          </li>
+          <% }) %>
+        </a>
+      </ul>
+    </div>
+
+    <script>
+      const delButtons = document.querySelectorAll("button.delete");
+      delButtons.forEach((delButton) => {
+        delButton.addEventListener("click", () => {
+          const endpoint = `/messages/${delButton.dataset.doc}`;
+
+          fetch(endpoint, {
+            method: "DELETE",
+          })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((err) => console.log(err));
+        });
+      });
+    </script>
+  </body>
+</html>
