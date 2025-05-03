@@ -1,0 +1,27 @@
+{
+  "name": "theodin-message-board",
+  "version": "1.0.0",
+  "description": "Mini message board",
+  "homepage": "https://github.com/bashair0/theOdin-message-board#readme",
+  "bugs": {
+    "url": "https://github.com/bashair0/theOdin-message-board/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bashair0/theOdin-message-board.git"
+  },
+  "license": "ISC",
+  "author": "bashair0",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start_local": "nodemon -r dotenv/config app.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.0"
+  }
+}
